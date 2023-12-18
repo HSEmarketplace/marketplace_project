@@ -1,3 +1,6 @@
+set search_path = demo_db, public;
+
+
 insert into categories
     (category_id, naming)
 values  
