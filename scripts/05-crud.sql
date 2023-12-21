@@ -7,8 +7,8 @@ set search_path = demo_db, public;
 insert into categories (category_id, naming) 
 values (9, 'snack');
 
-insert into goods (good_id, category_id, supplier_id, naming, rating, price, description)
-values (9, 5, 3, 'burn energy', 8, 1000, 'Burn is an energy drink owned and distributed by Monster Beverage Corporation, carrying the official tagline "Fuel your fire"');
+insert into goods (good_id, category_id, supplier_id, naming, rating, price, description, quantity_in_stock)
+values (9, 5, 3, 'burn energy', 8, 1000, 'Burn is an energy drink owned and distributed by Monster Beverage Corporation, carrying the official tagline "Fuel your fire"', 12);
 
 
 -- SELECT
@@ -29,4 +29,3 @@ update goods set price = 100 where price > 100;
 delete from categories where category_id = 9;
 
 delete from goods where good_id = 9;
-
