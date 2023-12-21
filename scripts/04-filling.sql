@@ -1,6 +1,5 @@
 set search_path = demo_db, public;
 
-
 insert into categories
     (category_id, naming)
 values  
@@ -16,28 +15,28 @@ values
 
 -- Creating users in user_main
 insert into user_main 
-	(user_id, first_name, surname, address, phone_number, email) 
+	(user_id, verification, first_name, surname, address, phone_number, email) 
 values
-	(1, 'рустам', 'назаров', 'душанбе, ул. сомони 28', '+992987654321', 'rustam@example.com'),
-	(2, 'махмад', 'амири', 'худжанд, ул. шахрисабз 12', '+992935712345', 'makhmad@example.com'),
-	(3, 'нигина', 'хакимова', 'курган-тюбе, ул. ленина 15', '+992501234567', 'nigina@example.com'),
-	(4, 'саида', 'мирзоева', 'хорог, ул. и. сомони 7', '+992987654321', 'saida@example.com'),
-	(5, 'фаридун', 'хамзаев', 'истаравшан, ул. с. навои 3', '+992935712345', 'faridun@example.com'),
-	(6, 'сафия', 'хайридинова', 'пенджикент, ул. р. передовой 22', '+992501234567', 'safiya@example.com'),
-	(7, 'зухра', 'абдуллоева', 'исфара, ул. шерабад 10', '+992987654321', 'zuhra@example.com');
+	(1, true, 'рустам', 'назаров', 'душанбе, ул. сомони 28', '+992987654321', 'rustam@example.com'),
+	(2, false, 'махмад', 'амири', 'худжанд, ул. шахрисабз 12', '+992935712345', 'makhmad@example.com'),
+	(3, true, 'нигина', 'хакимова', 'курган-тюбе, ул. ленина 15', '+992501234567', 'nigina@example.com'),
+	(4, true, 'саида', 'мирзоева', 'хорог, ул. и. сомони 7', '+992987654321', 'saida@example.com'),
+	(5, true, 'фаридун', 'хамзаев', 'истаравшан, ул. с. навои 3', '+992935712345', 'faridun@example.com'),
+	(6, false, 'сафия', 'хайридинова', 'пенджикент, ул. р. передовой 22', '+992501234567', 'safiya@example.com'),
+	(7, false, 'зухра', 'абдуллоева', 'исфара, ул. шерабад 10', '+992987654321', 'zuhra@example.com');
 
 
 -- Creating user history
 insert into user_history 
-	(user_id, first_name, surname, address, phone_number, email, start_date, end_date) 
+	(user_id, verification, first_name, surname, address, phone_number, email, start_date, end_date) 
 values
-	(1, 'рустам', 'назаров', 'душанбе, ул. сомони 28', '+992987654321', 'rustam@example.com', '2023-04-30 12:43:00', '2100-01-01 01:01:00'),
-	(2, 'махмад', 'амири', 'худжанд, ул. шахрисабз 12', '+992935712345', 'makhmad@example.com', '2023-04-21 02:23:00', '2100-01-01 01:01:00'),
-	(3, 'нигина', 'хакимова', 'курган-тюбе, ул. ленина 15', '+992501234567', 'nigina@example.com', '2023-05-20 13:50:00', '2100-01-01 01:01:00'),
-	(4, 'саида', 'мирзоева', 'хорог, ул. и. сомони 7', '+992987654321', 'saida@example.com', '2023-02-15 23:59:00', '2100-01-01 01:01:00'),
-	(5, 'фаридун', 'хамзаев', 'истаравшан, ул. с. навои 3', '+992935712345', 'faridun@example.com', '2023-12-21 12:59:00', '2100-01-01 01:01:00'),
-	(6, 'сафия', 'хайридинова', 'пенджикент, ул. р. передовой 22', '+992501234567', 'safiya@example.com', '2023-10-20 22:13:00', '2100-01-01 01:01:00'),
-	(7, 'зухра', 'абдуллоева', 'исфара, ул. шерабад 10', '+992987654321', 'zuhra@example.com', '2023-02-01 12:13:00', '2100-01-01 01:01:00');
+	(1, true, 'рустам', 'назаров', 'душанбе, ул. сомони 28', '+992987654321', 'rustam@example.com', '2023-04-30 12:43:00', '2100-01-01 01:01:00'),
+	(2, false, 'махмад', 'амири', 'худжанд, ул. шахрисабз 12', '+992935712345', 'makhmad@example.com', '2023-04-21 02:23:00', '2100-01-01 01:01:00'),
+	(3, true, 'нигина', 'хакимова', 'курган-тюбе, ул. ленина 15', '+992501234567', 'nigina@example.com', '2023-05-20 13:50:00', '2100-01-01 01:01:00'),
+	(4, true, 'саида', 'мирзоева', 'хорог, ул. и. сомони 7', '+992987654321', 'saida@example.com', '2023-02-15 23:59:00', '2100-01-01 01:01:00'),
+	(5, true, 'фаридун', 'хамзаев', 'истаравшан, ул. с. навои 3', '+992935712345', 'faridun@example.com', '2023-12-21 12:59:00', '2100-01-01 01:01:00'),
+	(6, false, 'сафия', 'хайридинова', 'пенджикент, ул. р. передовой 22', '+992501234567', 'safiya@example.com', '2023-10-20 22:13:00', '2100-01-01 01:01:00'),
+	(7, false, 'зухра', 'абдуллоева', 'исфара, ул. шерабад 10', '+992987654321', 'zuhra@example.com', '2023-02-01 12:13:00', '2100-01-01 01:01:00');
 
 
 -- Create suppliers
@@ -57,21 +56,21 @@ values
 
 -- Creating goods
 insert into goods 
-	(good_id, category_id, supplier_id, naming, rating, price, description) 
+	(good_id, category_id, supplier_id, naming, rating, price, description, quantity_in_stock)
 values
-	(1, 1, 1, 'monopoly with secret compartments', 8, 20, 'a classic board game with an added twist!'),
-	(2, 1, 2, 'candyland: the forbidden edition', 7, 15, 'a slightly darker take on the childhood game'),
-	(3, 2, 3, 'unicorn horn infused with magic dust', 9, 100, 'guaranteed to bring sparkle and mystery to your life'),
-	(4, 2, 4, 'mysterious elixir of mirth and mayhem', 8, 120, 'a potion that brings unpredictable results'),
-	(5, 3, 5, 'smoking jacket of invisibility', 8, 80, 'keeps you warm and hidden on all occasions'),
-	(6, 3, 6, 'stress-reducing cigarillos', 7, 10, 'for those relaxing moments of existential dread'),
-	(7, 4, 7, 'silent but deadly serum', 9, 200, 'guaranteed to cause a giggle in any situation'),
-	(8, 4, 8, 'nerf bazooka: the ultimate pillow fight weapon', 9, 150, 'for pillow fights that''ll leave your friends bewildered');
+	(1, 1, 1, 'monopoly with secret compartments', 8, 20, 'a classic board game with an added twist!', 10),
+	(2, 1, 2, 'candyland: the forbidden edition', 7, 15, 'a slightly darker take on the childhood game', 234),
+	(3, 2, 3, 'unicorn horn infused with magic dust', 9, 100, 'guaranteed to bring sparkle and mystery to your life', 234),
+	(4, 2, 4, 'mysterious elixir of mirth and mayhem', 8, 120, 'a potion that brings unpredictable results', 12),
+	(5, 3, 5, 'smoking jacket of invisibility', 8, 80, 'keeps you warm and hidden on all occasions', 34),
+	(6, 3, 6, 'stress-reducing cigarillos', 7, 10, 'for those relaxing moments of existential dread', 42),
+	(7, 4, 7, 'silent but deadly serum', 9, 200, 'guaranteed to cause a giggle in any situation', 213),
+	(8, 4, 8, 'nerf bazooka: the ultimate pillow fight weapon', 9, 150, 'for pillow fights that''ll leave your friends bewildered', 1413);
 
 
 -- Creating some descripion (only date actually)
-insert into suppplies_description 
-	(suppply_id, supplier_id, date_of_supply) 
+insert into suppply_description 
+	(suppply_id, supplier_id, supply_date) 
 values
 	(1, 1, '2023-04-20'),
 	(2, 2, '2023-04-21'),
@@ -101,7 +100,7 @@ values
 -- Creating purchases
 
 insert into purchases 
-	(purchase_id, user_id, date_of_purchase) 
+	(purchase_id, user_id, purchase_date) 
 values
 	(1, 1, '2023-04-20'),
 	(2, 2, '2023-04-21'),
@@ -129,7 +128,7 @@ values
 -- Creating reviews
 
 insert into reviews 
-	(review_id, user_id, product_id, rating, review, date_of_review) 
+	(review_id, user_id, good_id, rating, review, review_date) 
 values
 	(1, 1, 1, 8, 'жалган товар, сак ёндаш. как будто чапанхонадан келди!', '2023-04-20'),
 	(2, 2, 2, 7, 'эй, достон, бу товар анвахта келмайди, ашу кон! базоркун!', '2023-04-21'),
