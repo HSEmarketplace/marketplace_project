@@ -1,4 +1,4 @@
-set search_path = demo_db, public;
+set search_path = marketplace, public;
 
 insert into categories
     (category_id, naming)
@@ -69,8 +69,8 @@ values
 
 
 -- Creating some descripion (only date actually)
-insert into suppply_description 
-	(suppply_id, supplier_id, supply_date) 
+insert into supply_description 
+	(supply_id, supplier_id, supply_date) 
 values
 	(1, 1, '2023-04-20'),
 	(2, 2, '2023-04-21'),
@@ -83,7 +83,7 @@ values
 
 -- Creating information about goods (quantity)
 insert into goods_in_supply 
-	(suppply_id, good_id, quantity) 
+	(supply_id, good_id, quantity) 
 values
 	(1, 1, 100),
 	(2, 2, 150),

@@ -1,5 +1,4 @@
-create schema demo_db;
-set search_path = demo_db, public;
+set search_path = marketplace, public;
 
 
 
@@ -11,8 +10,8 @@ create table categories(
 
 
 
-drop table if exists supppliers cascade;
-create table supppliers(
+drop table if exists suppliers cascade;
+create table suppliers(
     supplier_id           int not null primary key,
     naming                text not null,
     rating                int check (rating between 0 and 10),
@@ -26,7 +25,7 @@ drop table if exists goods cascade;
 create table goods(
     good_id               int not null primary key,
     category_id           int not null references categories(category_id),
-    supplier_id           int not null references supppliers(supplier_id),
+    supplier_id           int not null references suppliers(supplier_id),
     naming                text not null,
     rating                int not null check (rating between 1 and 10),
     price                 int check (price >= 0),
@@ -35,23 +34,19 @@ create table goods(
 );
 
 
-
-drop table if exists suppply_description cascade;
-create table suppply_description(
-    suppply_id            int not null primary key,
-    supplier_id           int not null references supppliers(supplier_id),
+drop table if exists supply_description cascade;
+create table supply_description(
+    supply_id            int not null primary key,
+    supplier_id           int not null references suppliers(supplier_id),
     supply_date           date
 );
 
-
-
-
 drop table if exists goods_in_supply cascade;
 create table goods_in_supply(
-    suppply_id            int not null,
+    supply_id            int not null,
     good_id               int not null,
     quantity              int check (quantity >= 0),
-    primary key (suppply_id, good_id)
+    primary key (supply_id, good_id)
 );
 
 
@@ -59,17 +54,6 @@ drop table if exists categories cascade;
 create table categories(
     category_id           int not null primary key,
     naming                text not null
-);
-
-
-
-drop table if exists supppliers cascade;
-create table supppliers(
-    supplier_id           int not null primary key,
-    naming                text not null,
-    rating                int check (rating between 0 and 10),
-    registration_addres   text not null,
-    contact_phone         text
 );
 
 drop table if exists user_main cascade;
@@ -125,5 +109,6 @@ create table reviews(
     review                text not null,
     review_date           date
 );
+
 
 
