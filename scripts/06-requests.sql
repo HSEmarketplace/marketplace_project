@@ -1,4 +1,4 @@
-set search_path = demo_db, public;
+set search_path = marketplace, public;
 
 
 
