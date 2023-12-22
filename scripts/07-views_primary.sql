@@ -1,6 +1,20 @@
 set search_path = marketplace, public;
 
--- должно быть запущено расширение anon
+-- Обычное маскирование
+
+drop function if exists simple_mask cascade;
+create or replace function simple_mask(str text, x integer, y integer) RETURNS text AS $$
+    select substring(str from 1 for x) || 'xxxxxx' || substring(str from length(str) - y for y);
+$$ LANGUAGE SQL;
+
+-- Маскирование электронной почты
+
+drop function if exists mask_email cascade;
+create or replace function mask_email(email text) RETURNS text AS $$
+    select substring(email from 1 for 2) || 'xxxxxx' || substring(email from
+   		strpos(email, '@') for length(email) - strpos(email, '@') + 1);
+$$ LANGUAGE SQL;
+
 
 -- Товары в наличии на складе
 
@@ -18,11 +32,12 @@ create or replace  view non_zero_quantity_product_ordered as
 
 drop view if exists verified_users cascade;
 create or replace  view verified_users as
-	select 	anon.partial(user_main.first_name, 1, 'xxxxxx', 0) as first_name,    
-			anon.partial(user_main.surname, 1, 'xxxxxx', 0) as surname,    
-	   	 	anon.partial(user_main.address, 3, 'xxxxxx', 1) as address,    
-	   	 	anon.partial(user_main.phone_number, 2, $$xxxxxx$$, 2) as phone_number,                
-	    	anon.partial_email(user_main.email) as email  
+	select 	
+			simple_mask(user_main.first_name, 1, 0) as first_name,    
+			simple_mask(user_main.surname, 1, 0) as surname,    
+	   	 	simple_mask(user_main.address, 3, 0) as address,    
+	   	 	simple_mask(user_main.phone_number, 2, 2) as phone_number,                
+	    	mask_email(user_main.email) as email
 		from user_main where user_main.verification;
 
 -- Хорошие поставщики(те, у которых рейтинг больше 7), данные не маскируются, так как считаем,
@@ -48,11 +63,11 @@ create or replace view long_review as
 
 -- Сумма количества товаров по поставкам, упорядочены по сумме
 	
-drop view if exists summ_goods_in_supply_ordered cascade;
+drop view if exists sum_goods_in_supply_ordered cascade;
 create or replace view summ_goods_in_supply_ordered as
 	select 	supply_description.supply_id,              
 	    	supply_description.supply_date,
-	    	sum(goods_in_supply.quantity)
+	    	sum(goods_in_supply.quantity) as quantity_of_goods_in_supply
 	from supply_description left join goods_in_supply 
 		on supply_description.supply_id = goods_in_supply.supply_id
 	group by supply_description.supply_id
