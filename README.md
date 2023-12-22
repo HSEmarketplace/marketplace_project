@@ -9,4 +9,4 @@
 
 
 2. Logical Model
-![plot](models/imgs/logical.png)
+![plot](models/imgs/logic.png)
