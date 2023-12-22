@@ -12,7 +12,7 @@ create table categories(
 
 drop table if exists suppliers cascade;
 create table suppliers(
-    supplier_id           int not null primary key,
+	supplier_id           int not null primary key,
     naming                text not null,
     rating                int check (rating between 0 and 10),
     registration_addres   text not null,
@@ -94,9 +94,9 @@ create table purchases(
 drop table if exists item_in_purchases cascade;
 create table item_in_purchases(
     purchase_id           int not null unique,
-    product_id            int not null,
+    good_id            int not null,
     quantity              int check (quantity >= 0),
-    primary key (purchase_id, product_id)
+    primary key (purchase_id, good_id)
 );
 
 
