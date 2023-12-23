@@ -40,7 +40,7 @@ values
 
 
 -- Create suppliers
-insert into supppliers 
+insert into suppliers 
 	(supplier_id, naming, rating, registration_addres, contact_phone) 
 values
 	(1, 'дилдорбек', 8, 'г. ташкент, ул. олимпийская 7', '+9981122334455'),
@@ -112,7 +112,7 @@ values
 	(8, 4, '2023-04-27');
 
 insert into item_in_purchases 
-	(purchase_id, product_id, quantity) 
+	(purchase_id, good_id, quantity) 
 values
 	(1, 1, 5),
 	(2, 2, 3),
